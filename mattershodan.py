@@ -6,13 +6,15 @@ import urlparse
 import json
 import shodan
 import os
+import time
+import sys
 
 # This code is *highly* inspired from MasterSlash
 # The original code is available here: https://github.com/bitbackofen/slash-server-for-mattermost/blob/master/matterslash.py
 
 # Define server address and port, use localhost if you are running this on your Mattermost server.
 HOSTNAME = '0.0.0.0'
-PORT = os.environ['PORT']
+PORT = int(os.environ['PORT'])
 SHODAN_API_KEY = os.environ['SHODAN_API_KEY']
 MATTERMOST_TOKEN = os.environ['MATTERMOST_TOKEN']
 
@@ -122,6 +124,9 @@ def shodan_search_host(ip):
     return res
 
 if __name__ == '__main__':
+    FORMAT = '%(asctime)-15s - %(message)s'
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=FORMAT)
+    
     from BaseHTTPServer import HTTPServer
     server = HTTPServer((HOSTNAME, PORT), PostHandler)
     print('Starting matterslash server, use <Ctrl-C> to stop')
