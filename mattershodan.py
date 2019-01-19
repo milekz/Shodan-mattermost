@@ -5,15 +5,16 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 import urlparse
 import json
 import shodan
+import os
 
 # This code is *highly* inspired from MasterSlash
 # The original code is available here: https://github.com/bitbackofen/slash-server-for-mattermost/blob/master/matterslash.py
 
 # Define server address and port, use localhost if you are running this on your Mattermost server.
 HOSTNAME = '0.0.0.0'
-PORT = 8088
-SHODAN_API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXX"
-MATTERMOST_TOKEN = "YYYYYYYYYYYYYYYYYYYYYYYY"
+PORT = os.environ['PORT']
+SHODAN_API_KEY = os.environ['SHODAN_API_KEY']
+MATTERMOST_TOKEN = os.environ['MATTERMOST_TOKEN']
 
 
 # guarantee unicode string
