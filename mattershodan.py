@@ -72,8 +72,10 @@ class PostHandler(BaseHTTPRequestHandler):
 
         # Triggering the token is possibly more failure-resistant and secure:
         if MattermostRequest.token[0] == MATTERMOST_TOKEN:
-            if MattermostRequest.command[0] == u'/shodan_search_host':
-                responsetext = shodan_search_host(MattermostRequest.text)
+            #if MattermostRequest.command[0] == u'/shodan_search_host':
+            responsetext = shodan_search_host(MattermostRequest.text)
+#            if MattermostRequest.command[0] == u'/shodan_search_host':
+#                responsetext = shodan_search_host(MattermostRequest.text)                
         else:
             responsetext = 'Nope.'
 
