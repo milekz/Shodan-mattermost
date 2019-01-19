@@ -2,6 +2,12 @@
 
 Based on this project, you will be able to create a simple [Slash command](https://docs.mattermost.com/developer/slash-commands.html) to use in Mattermost (and maybe in Slack too) for [Shodan.io](https://www.shodan.io/). 
 
+Docker image build
+
+docker build -t shodanmatter:1 .
+
+docker run -e MY_USER=test -e PORT=8088 -e SHODAN_API_KEY=xxxxxxx -e MATTERMOST_TOKEN=yyyyyyyy  ... <shodanmatter:1> ...
+
 ### Preview
 
 Pro-tip: *For a quick overview, you can spin up a Mattermost Preview instance using Docker (Link to the [Hub](https://hub.docker.com/r/mattermost/mattermost-preview/)).*
